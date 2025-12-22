@@ -5,15 +5,10 @@ services:
   api-gateway:
     image:
       tag: 1b8eb5f
-      
-    service:
-      type: LoadBalancer
+
+    LoadBalancer:
       port: 8080
     
-    ingress:
-      enabled: false   # optional - nếu dùng LoadBalancer thay vì Ingress
-      host: petclinic.com
-
   config-server:
     image:
       tag: 1b8eb5f
