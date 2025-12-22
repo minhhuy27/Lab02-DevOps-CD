@@ -6,8 +6,9 @@ services:
     image:
       tag: 1b8eb5f
 
-    LoadBalancer:
-      port: 8080
+    # Expose api-gateway via a LoadBalancer so it receives an external IP
+    type: LoadBalancer
+    port: 8080
     
   config-server:
     image:
