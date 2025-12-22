@@ -1,6 +1,6 @@
 global:
   namespace: staging
-  dockeruser: tlavu2004
+  dockeruser: minhhuy27
 
 imageTag: &tag V5.7
 
