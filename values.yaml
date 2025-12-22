@@ -10,7 +10,13 @@ services:
       tag: latest
     port: 8080
     replicaCount: 1
-    ingress: 
+
+    service:
+      type: LoadBalancer
+      port: 8080
+    
+    ingress:
+      enabled: false   # optional - nếu dùng LoadBalancer thay vì Ingress
       host: petclinic.com
 
   config-server:
