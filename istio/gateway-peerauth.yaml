@@ -1,0 +1,12 @@
+# istio/gateway-peerauth.yaml
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: api-gateway-permissive
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: api-gateway
+  mtls:
+    mode: PERMISSIVE
