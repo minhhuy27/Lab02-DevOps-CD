@@ -4,7 +4,7 @@ global:
 services:
   api-gateway:
     image:
-      tag: 33776aa
+      tag: 771ac02
 
     # Expose api-gateway via a LoadBalancer so it receives an external IP
     type: LoadBalancer
