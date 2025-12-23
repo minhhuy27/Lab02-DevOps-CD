@@ -1,0 +1,15 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: customers-allow-gw
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: customers-service
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/dev/sa/api-gateway
