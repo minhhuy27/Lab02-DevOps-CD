@@ -42,6 +42,9 @@ services:
       tag: latest
     port: 8082
     replicaCount: 1
+    env:
+    MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: "health,info,prometheus,metrics,chaosmonkey"
+    CHAOS_MONKEY_ENABLED: "true"
 
   vets-service:
     name: vets-service
