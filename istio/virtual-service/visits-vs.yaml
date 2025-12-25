@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: visits
+  namespace: dev
+spec:
+  hosts:
+  - visits-service
+  http:
+  - match:
+    - uri:
+        prefix: /pets/visits        # các path bạn muốn đi qua policy này
+    - uri:
+        prefix: /owners/             # nếu cần cho endpoint owners/*/pets/{petId}/visits
+    route:
+    - destination:
+        host: visits-service
+        port:
+          number: 8082
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+      retryOn: "5xx,gateway-error,connect-failure,refused-stream"
+    timeout: 5s
