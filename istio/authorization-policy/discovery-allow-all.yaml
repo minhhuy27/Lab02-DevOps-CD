@@ -1,0 +1,46 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: discovery-server-allow
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: discovery-server
+  action: ALLOW
+  rules:
+  # Rule 1: Allow all services in dev namespace to register (PUT)
+  - from:
+    - source:
+        namespaces: ["dev"]
+    to:
+    - operation:
+        methods: ["PUT"]
+        paths: ["/eureka/apps/*"]
+  
+  # Rule 2: Allow all services in dev namespace to fetch registry (GET)
+  - from:
+    - source:
+        namespaces: ["dev"]
+    to:
+    - operation:
+        methods: ["GET"]
+        paths: ["/eureka/apps", "/eureka/apps/", "/eureka/apps/*"]
+  
+  # Rule 3: Allow health check and other GET operations
+  - from:
+    - source:
+        namespaces: ["dev"]
+    to:
+    - operation:
+        methods: ["GET"]
+        paths: ["/actuator/*", "/health", "/info"]
+  
+  # Rule 4: Allow POST for de-registration
+  - from:
+    - source:
+        namespaces: ["dev"]
+    to:
+    - operation:
+        methods: ["POST", "DELETE"]
+        paths: ["/eureka/apps/*"]
