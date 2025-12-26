@@ -19,7 +19,7 @@ services:
 
   customers-service:
     image:
-      tag: 1b8eb5f
+      tag: 7977106
     
   vets-service:
     image:
