@@ -27,6 +27,6 @@ services:
 
   visits-service:
     image:
-      tag: ecef206a
+      tag: 8d01c496
 
   
