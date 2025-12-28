@@ -19,7 +19,7 @@ services:
 
   customers-service:
     image:
-      tag: 7a671e2
+      tag: ecef206a
     
   vets-service:
     image:
@@ -27,6 +27,6 @@ services:
 
   visits-service:
     image:
-      tag: 623ea8b5
+      tag: ecef206a
 
   
