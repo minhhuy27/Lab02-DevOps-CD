@@ -1,29 +1,29 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: visits-virtual-service
+  name: customers-virtual-service
   namespace: dev
 spec:
   hosts:
-  - visits-service
+  - customers-service
   http:
-  # --- RULE 1: Chỉ áp dụng Retry cho phương thức GET ---
+  # Rule 1: Retry cho các hành động đọc (GET)
   - match:
     - method:
         exact: GET
     route:
     - destination:
-        host: visits-service
+        host: customers-service
         port:
-          number: 8082
+          number: 8081
     retries:
       attempts: 3
       perTryTimeout: 2s
       retryOn: "5xx,gateway-error,connect-failure,refused-stream"
-      
-  # --- RULE 2: Các phương thức khác (POST/PUT/DELETE) -> KHÔNG Retry ---
+  
+  # Rule 2: Các hành động ghi (POST/PUT) -> Đi thẳng, không retry
   - route:
     - destination:
-        host: visits-service
+        host: customers-service
         port:
-          number: 8082
+          number: 8081

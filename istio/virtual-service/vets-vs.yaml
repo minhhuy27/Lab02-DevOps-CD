@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: vets-virtual-service
+  namespace: dev
+spec:
+  hosts:
+  - vets-service
+  http:
+  - route:
+    - destination:
+        host: vets-service
+        port:
+          number: 8083 
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+      retryOn: "5xx,gateway-error,connect-failure,refused-stream"
