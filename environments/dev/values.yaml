@@ -27,6 +27,6 @@ services:
 
   visits-service:
     image:
-      tag: fc199e5
+      tag: 32def6b9
 
   
