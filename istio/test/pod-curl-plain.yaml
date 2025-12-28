@@ -1,0 +1,14 @@
+# pod-curl-plain.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curl-plain
+  namespace: dev
+  annotations:
+    sidecar.istio.io/inject: "false"
+spec:
+  restartPolicy: Never
+  containers:
+  - name: curl
+    image: curlimages/curl:8.5.0
+    command: ["sleep","3600"]
