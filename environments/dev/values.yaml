@@ -4,7 +4,7 @@ global:
 services:
   api-gateway:
     image:
-      tag: 771ac02
+      tag: 064b2799
 
     type: LoadBalancer
     port: 8080
