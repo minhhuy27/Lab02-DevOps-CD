@@ -9,7 +9,13 @@ spec:
       app: customers-service
   action: ALLOW
   rules:
+  # Rule 1: Cho phép API Gateway truy cập
   - from:
     - source:
-        principals:
-        - cluster.local/ns/dev/sa/api-gateway
+        principals: ["cluster.local/ns/dev/sa/api-gateway"]
+
+  # Rule 2: Cho phép Health Check và Metrics
+  - to:
+    - operation:
+        methods: ["GET"]
+        paths: ["/actuator/*"]
