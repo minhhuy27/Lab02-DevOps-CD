@@ -4,7 +4,7 @@ global:
 services:
   api-gateway:
     image:
-      tag: 771ac02
+      tag: 064b2799
 
     type: LoadBalancer
     port: 8080
@@ -19,7 +19,7 @@ services:
 
   customers-service:
     image:
-      tag: 7a671e2
+      tag: 15a2fefb
     
   vets-service:
     image:
@@ -27,6 +27,6 @@ services:
 
   visits-service:
     image:
-      tag: 32def6b9
+      tag: 8d01c496
 
   
