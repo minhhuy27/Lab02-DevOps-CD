@@ -142,9 +142,3 @@ kubectl -n istio-system port-forward svc/kiali 20001:20001
 - Đặt tên port HTTP; bỏ/điều chỉnh deny-all nếu chặn discovery không mong muốn.
 - Log proxy: `kubectl logs -n dev deploy/api-gateway -c istio-proxy | head`
 
-
-
-
-```
-
-```
