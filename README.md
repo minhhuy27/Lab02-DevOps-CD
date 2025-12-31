@@ -85,6 +85,8 @@ kubectl wait --for=condition=ready pod/curltest -n dev --timeout=180s
 # Vào pod test
 kubectl exec -n dev -it curltest -- sh
 
+```
+```bash
 # Chạy lệnh (Mong đợi: Connection Reset / Bị chặn bởi mTLS STRICT)
 curl -v http://customers-service.dev.svc.cluster.local:8081/owners        
 curl -v "http://visits-service.dev.svc.cluster.local:8082/pets/visits?petId=1"  
