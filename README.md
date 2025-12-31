@@ -111,7 +111,7 @@ Ví dụ với `istio/virtual-service/visits-vs.yaml` (Policy: Retry 3 lần n�
 
 1. **Tạo lỗi 5xx thông qua endpoint lỗi:**
 ```bash
-kubectl exec -n dev deploy/api-gateway -- curl -i "http://visits-service:8082/pets/visits/oops"
+kubectl exec -n dev deploy/api-gateway -- curl -i "http://visits-service:8082/oops"
 
 ```
 
