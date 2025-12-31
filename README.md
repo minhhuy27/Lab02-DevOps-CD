@@ -79,15 +79,16 @@ Chứng minh các truy cập từ nguồn khác (kể cả trong cùng namespace
 * **Từ pod `curl-plain` (Không có Sidecar/mTLS):**
 ```bash
 # Triển khai pod test
-kubectl apply -f istio/test/pod-curl-plain.yaml
+kubectl run curltest -n dev --image=curlimages/curl:8.5.0 --restart=Never --command -- sleep 3600
 kubectl wait --for=condition=ready pod/curltest -n dev --timeout=180s
 
 # Vào pod test
 kubectl exec -n dev -it curltest -- sh
 
 # Chạy lệnh (Mong đợi: Connection Reset / Bị chặn bởi mTLS STRICT)
-curl -v [http://customers-service.dev.svc.cluster.local:8081/owners](http://customers-service.dev.svc.cluster.local:8081/owners)
-curl -v [http://visits-service.dev.svc.cluster.local:8082/pets/visits?petId=1](http://visits-service.dev.svc.cluster.local:8082/pets/visits?petId=1)
+curl -v http://customers-service.dev.svc.cluster.local:8081/owners        
+curl -v "http://visits-service.dev.svc.cluster.local:8082/pets/visits?petId=1"  
+curl -v http://vets-service.dev.svc.cluster.local:8083/vets
 
 ```
 
