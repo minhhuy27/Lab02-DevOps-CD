@@ -23,7 +23,7 @@ services:
     
   vets-service:
     image:
-      tag: 1b8eb5f
+      tag: d0e8a754
 
   visits-service:
     image:
